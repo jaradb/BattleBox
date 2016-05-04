@@ -1,0 +1,44 @@
+package view.swingGUI;
+
+import javax.swing.*;
+
+import battleBox.Vector2;
+import view.guiInterface.Image;
+import view.guiInterface.Texture;
+
+
+public class SwingImage implements Image
+{
+	public JLabel jLabel; 
+
+	@Override
+	public void setPosition(Vector2 screenSpacePosition)
+	{
+		jLabel.setBounds(	screenSpacePosition.x, 
+							screenSpacePosition.y, 
+							jLabel.getBounds().width, 
+							jLabel.getBounds().height);
+	}
+
+	@Override
+	public void changeTexture(Texture newTexture)
+	{
+		SwingTexture swingTexture = (SwingTexture)newTexture;
+		
+		jLabel.setIcon(new ImageIcon(swingTexture.bufferedImage));
+		
+	}
+
+	@Override
+	public void highlight(boolean highlightEnabled)
+	{
+
+	}
+
+	@Override
+	public void tintTexture(float r, float g, float b)
+	{
+
+	}
+
+}

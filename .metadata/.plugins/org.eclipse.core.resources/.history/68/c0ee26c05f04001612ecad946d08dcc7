@@ -1,0 +1,38 @@
+package model.factories;
+
+import battleBox.Vector2;
+import model.Token;
+import model.tokenTypes.*;
+
+public class TokenFactory
+{
+	public ClassToken CreateClassToken(String classType, Vector2 gridPosition, int playerOwner)
+	{
+		ClassToken newClassToken = null;
+		
+		switch (classType)
+		{
+		case "archer":
+			newClassToken = new ArcherClassToken();
+			break;
+			
+		case "cleric":
+			newClassToken = new ClericClassToken();
+			break;
+			
+		case "mage":
+			newClassToken = new MageClassToken();
+			break;
+			
+		case "thief":
+			newClassToken = new ThiefClassToken();
+			break;
+			
+		case "warrior":
+			newClassToken = new WarriorClassToken();
+			break;
+		}
+		
+		return null;
+	}
+}

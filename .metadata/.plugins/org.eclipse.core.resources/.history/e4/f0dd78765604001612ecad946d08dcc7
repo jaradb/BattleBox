@@ -1,0 +1,8 @@
+package model.tokenTypes.classTokenTypes;
+
+import model.tokenTypes.ClassToken;
+
+public class MageClassToken extends ClassToken
+{
+
+}

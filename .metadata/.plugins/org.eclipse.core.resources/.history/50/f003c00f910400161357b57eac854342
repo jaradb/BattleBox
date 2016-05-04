@@ -1,0 +1,14 @@
+package model;
+
+import battleBox.Vector2;
+
+public class Tile 
+{
+	public Vector2 gridPosition; 
+	
+	
+	public String GetImageAssetName()
+	{
+		return "Not implemented";
+	}
+}

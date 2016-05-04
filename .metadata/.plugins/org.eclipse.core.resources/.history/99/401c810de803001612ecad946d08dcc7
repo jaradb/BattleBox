@@ -1,0 +1,8 @@
+package model;
+
+import boardGame.Vector2;
+
+public class Tile 
+{
+	public Vector2 gridPosition; 
+}

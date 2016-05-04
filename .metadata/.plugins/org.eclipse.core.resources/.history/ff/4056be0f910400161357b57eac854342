@@ -1,0 +1,12 @@
+package model.tileTypes;
+
+import model.Tile;
+
+public class StartingPointTile  extends Tile
+{
+	@Override
+	public String GetImageAssetName()
+	{
+		return "startingPointTile.png";
+	}
+}

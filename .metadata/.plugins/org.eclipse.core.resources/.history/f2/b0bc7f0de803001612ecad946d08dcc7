@@ -1,0 +1,10 @@
+package view.guiInterface;
+
+import boardGame.Vector2;
+
+public interface TextBox
+{
+	public void setScreenSpacePosition(Vector2 position);
+	
+	public void setText(String string);
+}

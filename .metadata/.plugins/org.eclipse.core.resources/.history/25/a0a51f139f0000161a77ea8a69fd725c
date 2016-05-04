@@ -1,0 +1,7 @@
+package boardGame;
+
+public class Constants
+{
+	public static int boardHeight = 9;
+	public static int boardWidth = 9;
+}

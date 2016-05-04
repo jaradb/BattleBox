@@ -1,0 +1,22 @@
+package view.swingGUI;
+
+import view.guiInterface.Texture;
+
+public class SwingTexture implements Texture
+{
+
+	@Override
+	public void loadTextureFromFile(String filename)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void tint(float r, float g, float b)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

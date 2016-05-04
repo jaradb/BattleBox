@@ -1,0 +1,33 @@
+package model;
+
+import boardGame.Constants;
+import model.tileTypes.PathwayTile;
+
+public class GameBoard
+{
+	public Tile[][] tileGrid;
+	//public ArrayList Tokens
+	
+	public GameBoard()
+	{
+		
+	}
+	
+	public void CreateGameBoard()
+	{
+		
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		tileGrid = new Tile[boardHeight][boardWidth];
+		
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				tileGrid[i][j] = new PathwayTile();
+			}
+		}
+	}
+	
+}

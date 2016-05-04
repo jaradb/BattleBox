@@ -1,0 +1,14 @@
+package view.guiInterface;
+import boardGame.Vector2;
+
+public interface Image
+{
+	void setPosition(Vector2 screenSpacePosition);
+	
+	void ChangeTexture(Texture newTexture);
+	
+	void Highlight(boolean highlightEnabled);
+	
+	
+	
+}

@@ -1,0 +1,6 @@
+package view.guiInterface;
+
+public interface GUIFactory
+{
+	
+}

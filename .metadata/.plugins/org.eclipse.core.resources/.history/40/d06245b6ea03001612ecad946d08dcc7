@@ -1,0 +1,38 @@
+package view.swingGUI;
+
+import view.guiInterface.GUIFactory;
+import view.guiInterface.Image;
+import view.guiInterface.TextBox;
+import view.guiInterface.Texture;
+
+public class SwingFactory implements GUIFactory
+{
+
+	@Override
+	public void CreateWindow(int sizeX, int sizeY)
+	{
+	
+	}
+
+	@Override
+	public Image CreateImage(Texture texture)
+	{
+
+		return null;
+	}
+
+	@Override
+	public TextBox CreateTextBox()
+	{
+
+		return null;
+	}
+
+	@Override
+	public Texture CreateTexture()
+	{
+
+		return null;
+	}
+
+}

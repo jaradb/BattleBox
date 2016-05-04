@@ -1,0 +1,23 @@
+package view;
+
+import view.guiInterface.*;
+
+public class UIRenderer
+{
+	GUIFactory guiFactory;
+	
+	public TextBox currentPlayerTextbox;
+	
+	public UIRenderer(GUIFactory guiFactoryToUse)
+	{
+		guiFactory = guiFactoryToUse;
+	}
+	
+	public void CreateCurrentPlayerIndicator()
+	{
+		currentPlayerTextbox = guiFactory.CreateTextBox();
+		
+		currentPlayerTextbox.setBounds(new Vector2(700, 0), new Vector2(100, 100));;
+	}
+	
+}

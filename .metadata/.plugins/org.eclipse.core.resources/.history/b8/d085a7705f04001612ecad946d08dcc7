@@ -1,0 +1,6 @@
+package model.factories;
+
+public class TokenFactory
+{
+
+}

@@ -1,0 +1,13 @@
+package model.tokenTypes.classTokenTypes;
+
+import model.tokenTypes.ClassToken;
+
+public class ArcherClassToken extends ClassToken
+{
+
+	@Override
+	public String GetImageAssetName()
+	{
+		return "archer.png";
+	}
+}

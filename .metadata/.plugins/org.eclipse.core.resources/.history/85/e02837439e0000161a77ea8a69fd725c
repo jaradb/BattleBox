@@ -1,0 +1,19 @@
+package model;
+
+import boardGame.Constants;
+
+public class GameBoard
+{
+	public Tile[][] tileGrid;
+	
+	public GameBoard()
+	{
+		
+	}
+	
+	public void CreateGameBoard()
+	{
+		tileGrid = new tileGrid[Constants.boardHeight][Constants.boardWidth];
+	}
+	
+}

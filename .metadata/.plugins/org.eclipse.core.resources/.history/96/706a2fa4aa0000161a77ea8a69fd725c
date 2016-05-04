@@ -1,0 +1,12 @@
+package boardGame;
+
+public class Constants
+{
+	public static int boardHeight = 9;
+	public static int boardWidth = 9;
+	
+	//Squared, in pixels.
+	public static int defaultTileSize = 64;
+	
+	public static float turnTimeInSeconds = 15.0f;
+}

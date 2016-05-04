@@ -1,0 +1,255 @@
+package view;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import battleBox.Constants;
+import battleBox.Vector2;
+
+import controller.*;
+import model.GameBoard;
+import model.tileTypes.*;
+import model.tokenTypes.classTokenTypes.*;
+import view.guiInterface.*;
+
+
+
+public class BoardRenderer
+{
+	/*
+	private static final long serialVersionUID = 1L;
+	
+	static JFrame frame;
+	static Canvas canvas;
+	static JPanel panel;
+	*/
+	
+	public GameBoard boardToRender;
+	GUIFactory guiFactory;
+	
+	public Image crossHairLabel;
+	public Image playerTurnLabel;
+	
+	
+	
+	Image[][] tileImages = null;
+
+	ArrayList<Image> tokenImages = null;
+	
+	public BoardRenderer(GUIFactory guiFactoryToUse)
+	{
+		guiFactory = guiFactoryToUse;
+	}
+
+
+	public void SetBoardToRender(GameBoard board)
+	{
+		boardToRender = board;
+	}
+	
+	public void createTileImages()
+	{
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		tileImages = new Image[boardWidth][boardHeight];
+						
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				tileImages[i][j] = guiFactory.CreateImage(guiFactory.CreateTexture(boardToRender.tileGrid[i][j].GetImageAssetName()));
+				tileImages[i][j].setSize(new Vector2(Constants.defaultTileSize, Constants.defaultTileSize));
+				tileImages[i][j].setGridPosition(new Vector2(i, j));
+			}
+		}
+	}
+	
+	public void createTokenImages()
+	{
+		tokenImages = new ArrayList<Image>();
+	
+		
+		for(int i = 0; i < boardToRender.tokens.size(); i++)
+		{
+			Image newToken = guiFactory.CreateImage(guiFactory.CreateTexture(boardToRender.tokens.get(i).GetImageAssetName());
+			newToken.setSize(new Vector2(Constants.defaultTileSize, Constants.defaultTileSize));
+			newToken.setGridPosition(boardToRender.tokens.get(i).gridPosition);
+		}
+	}
+
+	/*
+
+	public void createTokenRenderers()
+	{
+		Vector2 tileSize = new Vector2(Constants.defaultTileSize, Constants.defaultTileSize);
+		
+		tokenRenderers = new ArrayList<Image>();
+		
+		for(int i = 0; i < boardToRender.tokens.size(); i++)
+		{
+			TokenRenderer newToken = null;
+			
+			if(boardToRender.tokens.get(i) instanceof ArcherClassToken)
+			{
+				newToken = new TokenRenderer(new ImageIcon(archerImage));
+			}
+			else if(boardToRender.tokens.get(i) instanceof ClericClassToken)
+			{
+				newToken = new TokenRenderer(new ImageIcon(clericImage));
+			}
+			else if(boardToRender.tokens.get(i) instanceof MageClassToken)
+			{
+				newToken = new TokenRenderer(new ImageIcon(mageImage));
+			}
+			else if(boardToRender.tokens.get(i) instanceof ThiefClassToken)
+			{
+				newToken = new TokenRenderer(new ImageIcon(thiefImage));
+	
+			}
+			else if(boardToRender.tokens.get(i) instanceof WarriorClassToken)
+			{
+				newToken = new TokenRenderer(new ImageIcon(warriorImage));
+
+			}
+			
+			newToken.gridPosition = boardToRender.tokens.get(i).gridPosition;
+			tokenRenderers.add(newToken);
+			
+			newToken.setBounds(newToken.gridPosition.x * tileSize.x, newToken.gridPosition.y * tileSize.y, tileSize.x, tileSize.y);
+			
+			frame.add(newToken);
+		}
+	}
+	
+	public void createTileRenderers()
+	{
+		Vector2 tileSize = new Vector2(Constants.defaultTileSize, Constants.defaultTileSize);
+		
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		tileRenderers = new TileRenderer[boardWidth][boardHeight];
+		
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				tileRenderers[i][j] = new TileRenderer(new ImageIcon(blankTileImage));
+				tileRenderers[i][j].setBounds(i * tileSize.x, j * tileSize.y, tileSize.x, tileSize.y);
+				frame.add(tileRenderers[i][j]);
+			}
+		}
+		
+		frame.repaint();
+		
+	}
+	
+	public void addMouseListeners(TurnController controller)
+	{
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				BoardMouseListener boardListener = new BoardMouseListener();
+				boardListener.gridPosition = new Vector2(i, j);
+				boardListener.turnControllerHandle = controller;
+				tileRenderers[i][j].addMouseListener(boardListener);
+			}
+		}
+	}
+	
+	public void updateRenderInformation()
+	{
+		//First we update the tiles in the board
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				//Think of a better way to do this. A way to involve less backwards
+				//flowing code... 
+				if(boardToRender.tileGrid[i][j] instanceof BlankTile)
+				{
+					tileRenderers[i][j].setIcon(new ImageIcon(blankTileImage));
+				}
+				else if(boardToRender.tileGrid[i][j] instanceof BlockedTile)
+				{
+					tileRenderers[i][j].setIcon(new ImageIcon(blockedTileImage));
+				}
+				else if(boardToRender.tileGrid[i][j] instanceof PathwayTile)
+				{
+					tileRenderers[i][j].setIcon(new ImageIcon(pathwayTileImage));
+				}
+				else if(boardToRender.tileGrid[i][j] instanceof StartingPointTile)
+				{
+					tileRenderers[i][j].setIcon(new ImageIcon(startingPointTileImage));
+				}
+			}
+		}
+		
+	}
+	
+	public TokenRenderer GetTokenRendererAtLocation(Vector2 location)
+	{
+		for(int i = 0; i < tokenRenderers.size(); i++)
+		{
+			if(tokenRenderers.get(i).gridPosition.equals(location))
+			{
+				return tokenRenderers.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	public void createUI()
+	{
+		crossHairLabel = new JLabel(new ImageIcon(crossHairImage));
+		
+		playerTurnLabel = new JLabel(new ImageIcon(player1TurnImage));
+		
+		playerTurnLabel.setBounds(150, 600, 256, 64);
+		
+		crossHairLabel.setBounds(0, 650, 64, 64);
+
+		panel.add(playerTurnLabel);
+		
+		panel.add(crossHairLabel);
+		
+		EnableCrossHair(false);
+		
+	}
+	
+	public void EnableCrossHair(boolean enabled)
+	{
+		crossHairLabel.setVisible(enabled);
+	}
+	
+	public void SetCrosshairGridLocation(Vector2 gridLocation)
+	{
+		crossHairLabel.setBounds(gridLocation.x * Constants.defaultTileSize, gridLocation.y * Constants.defaultTileSize, Constants.defaultTileSize, Constants.defaultTileSize);
+	}
+	
+	public void SetPlayerTurnUI(int playerNumber)
+	{
+		if(playerNumber == 1) playerTurnLabel.setIcon(new ImageIcon(player1TurnImage));
+		
+		if(playerNumber == 2) playerTurnLabel.setIcon(new ImageIcon(player2TurnImage));
+	}
+	*/
+}
+
+

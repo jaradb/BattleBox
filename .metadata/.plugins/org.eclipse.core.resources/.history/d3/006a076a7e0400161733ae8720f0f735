@@ -1,0 +1,102 @@
+package view.swingGUI;
+
+import java.awt.Canvas;
+import java.awt.Dimension;
+
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+import view.guiInterface.GUIFactory;
+import view.guiInterface.Image;
+import view.guiInterface.TextBox;
+import view.guiInterface.Texture;
+
+public class SwingFactory implements GUIFactory
+{
+	
+	static JFrame frame;
+	static Canvas canvas;
+	static JPanel panel;
+	
+
+	@Override
+	public void CreateWindow(String windowTitle, int sizeX, int sizeY)
+	{
+	    frame = new JFrame(windowTitle);
+	    panel = (JPanel) frame.getContentPane();
+	    panel.setPreferredSize(new Dimension(sizeX, sizeY));
+	    panel.setLayout(null);
+	    
+	    canvas = new Canvas();
+	    canvas.setBounds(0, 0, sizeX, sizeY);
+	    canvas.setIgnoreRepaint(true);
+	    
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.pack();
+	    
+	    //this will make the frame not re-sizable
+	    frame.setResizable(false);
+	    frame.setVisible(true);
+
+	}
+
+	@Override
+	public Image CreateImage(Texture texture)
+	{
+		SwingImage newSwingImage = new SwingImage();
+		
+		JLabel newJLabel = new JLabel();
+		SwingTexture swingTexture = (SwingTexture)texture;
+		
+		newJLabel.setIcon(new ImageIcon(swingTexture.bufferedImage));
+		
+		newSwingImage.jLabel = newJLabel;
+		
+		frame.add(newJLabel);
+
+		frame.repaint();
+		
+		return newSwingImage;
+	}
+
+	@Override
+	public TextBox CreateTextBox()
+	{
+		SwingTextbox newTextBox = new SwingTextbox();
+		
+		newTextBox.jTextField = new JTextField();
+		
+		frame.add(newTextBox.jTextField);
+		
+		return newTextBox;
+	}
+
+	@Override
+	public Texture CreateTexture(String filename)
+	{
+		if(loadedTextures == null) loadedTextures = new ArrayList<SwingTexture>();
+		
+		for(int i = 0; i < loadedTextures.size(); i++)
+		{
+			if(loadedTextures.get(i).filename == filename)
+			{
+				return loadedTextures.get(i);
+			}
+		}
+		
+		//otherwise create the texture and put it in the list.
+		SwingTexture newTexture = new SwingTexture();
+		
+		newTexture.loadTextureFromFile(filename);
+		newTexture.filename = filename;
+		
+		loadedTextures.add(newTexture);
+
+		return newTexture;
+	}
+
+	
+	private ArrayList<SwingTexture> loadedTextures; 
+	
+}

@@ -1,0 +1,77 @@
+package controller;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.lang.reflect.*;
+
+import battleBox.Vector2;
+import view.ViewRenderer;
+
+
+public class BoardMouseListener implements MouseListener
+{
+	public Vector2 gridPosition;
+	
+	public Object objectToInvoke;
+
+	@Override
+	public void mouseClicked(MouseEvent arg0)
+	{
+		//System.out.println("clicked: " + gridPosition.x + " " + gridPosition.y);
+		
+		Class<?> what = objectToInvoke.getClass();
+		Method huh = null;
+		
+		try
+		{
+			huh = what.getMethod("handleClickEvent", Vector2.class);
+		} 
+		catch (NoSuchMethodException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (SecurityException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		huh.invoke(objectToInvoke, gridPosition);
+		
+		System.out.println(what.toString());
+		
+		System.out.println("clicked: " + gridPosition.x + " " + gridPosition.y);
+		
+		//turnControllerHandle.HandleClickEvent(gridPosition);
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0)
+	{
+		
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0)
+	{
+		
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0)
+	{
+		
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0)
+	{
+		
+		
+	}
+
+}

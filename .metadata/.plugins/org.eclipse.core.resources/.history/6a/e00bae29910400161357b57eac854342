@@ -1,0 +1,47 @@
+package view;
+
+import battleBox.Constants;
+import battleBox.Vector2;
+import model.GameBoard;
+import view.guiInterface.GUIFactory;
+
+public class ViewRenderer
+{
+	GUIFactory guiFactory;
+	
+	public BoardRenderer boardRenderer;
+	public UIRenderer uiRenderer;
+	
+	public void InitialiseRenderer(GUIFactory factoryToUse)
+	{
+		guiFactory = factoryToUse;
+		
+		boardRenderer = new BoardRenderer(guiFactory);
+		uiRenderer = new UIRenderer(guiFactory);
+	}
+	
+	public void CreateWindow()
+	{
+		guiFactory.CreateWindow(Constants.windowTitle, Constants.windowWidth, Constants.windowHeight);
+	}
+	
+	public void CreateBoardView(GameBoard board)
+	{
+		boardRenderer.SetBoardToRender(board);
+		
+		boardRenderer.createTokenImages();
+		boardRenderer.createTileImages();
+		
+		uiRenderer.CreateCurrentPlayerIndicator();
+	}
+	
+	
+	public void handleClickEvent(Vector2 gridPosition)
+	{
+		boardRenderer.handleClickEvent(gridPosition);
+	}
+	
+	
+	
+}
+

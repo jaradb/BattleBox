@@ -1,0 +1,13 @@
+package model;
+
+public class Token 
+{
+	enum Owner
+	{
+		player1,
+		player2,
+		neutral
+	}
+	
+	public Owner tokenOwner;
+}

@@ -1,0 +1,12 @@
+package model.tokenTypes.classTokenTypes;
+
+import model.tokenTypes.ClassToken;
+
+public class MageClassToken extends ClassToken
+{
+	@Override
+	public String getImageAssetName()
+	{
+		return "mage.png";
+	}
+}

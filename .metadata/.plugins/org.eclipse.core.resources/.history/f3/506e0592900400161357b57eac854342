@@ -1,0 +1,83 @@
+package model;
+
+import java.util.ArrayList;
+
+import battleBox.Constants;
+import battleBox.Vector2;
+import model.factories.*;
+import model.tileTypes.PathwayTile;
+import model.tokenTypes.classTokenTypes.*;
+
+public class GameBoard
+{
+	TokenFactory tokenFactory;
+	TileFactory tileFactory;
+	
+	public Tile[][] tileGrid;
+	public ArrayList<Token> tokens;
+	
+	public GameBoard()
+	{
+		tokenFactory = new TokenFactory();
+		tileFactory = new TileFactory();
+	}
+	
+	public void CreateGameBoard()
+	{
+		//Create the tiles
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		tileGrid = new Tile[boardHeight][boardWidth];
+		
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				tileGrid[i][j] = new TileFactory().CreateTile("pathway", new Vector2(i, j));
+			}
+		}
+				
+		tokens = new ArrayList<Token>();
+		
+		for(int i = 0; i < 2; i++)
+		{
+			int gridX = 2;
+			int gridY = i == 0 ? 0 : 8;
+			
+			tokens.add(tokenFactory.CreateClassToken("archer", new Vector2(gridX, gridY), Token.Owner.values()[i]));
+			gridX++;
+			
+			tokens.add(tokenFactory.CreateClassToken("cleric", new Vector2(gridX, gridY), Token.Owner.values()[i]));
+			gridX++;
+			
+			tokens.add(tokenFactory.CreateClassToken("mage", new Vector2(gridX, gridY), Token.Owner.values()[i]));
+			gridX++;
+			
+			tokens.add(tokenFactory.CreateClassToken("thief", new Vector2(gridX, gridY), Token.Owner.values()[i]));
+			gridX++;
+			
+			tokens.add(tokenFactory.CreateClassToken("warrior", new Vector2(gridX, gridY), Token.Owner.values()[i]));
+		}
+	}
+	
+	public Token GetTokenAtLocation(Vector2 location)
+	{
+		for(int i = 0; i < tokens.size(); i++)
+		{
+			if(tokens.get(i).gridPosition.equals(location))
+			{
+				return tokens.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	public void handleClickEvent(Vector2 clickGridLocation)
+	{
+		
+	}
+	
+}

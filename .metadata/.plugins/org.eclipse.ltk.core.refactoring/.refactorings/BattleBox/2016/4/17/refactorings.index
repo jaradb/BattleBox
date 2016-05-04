@@ -1,0 +1,31 @@
+1460866826380	Rename type 'Renderer'
+1460868931825	Rename method 'changeTexture'
+1460884829421	Delete element
+1460893136382	Rename method 'InitialisePlayers'
+1460893139968	Rename method 'SwitchPlayers'
+1460893144304	Rename method 'UpdateTurn'
+1460893164192	Rename method 'CreateGameBoard'
+1460893168126	Rename method 'GetTokenAtLocation'
+1460893176257	Rename method 'GetImageAssetName'
+1460893182275	Rename method 'GetImageAssetName'
+1460893188516	Rename method 'CreateTile'
+1460893197312	Rename method 'CreateClassToken'
+1460893219749	Rename method 'SetBoardToRender'
+1460893225924	Rename method 'AddMouseListeners'
+1460893234741	Rename method 'HighlightTilesAroundPoint'
+1460893239035	Rename method 'MoveTokenImage'
+1460893246811	Rename method 'GetTileImageFromArray'
+1460893259216	Rename method 'CreateCurrentPlayerIndicator'
+1460893262043	Rename method 'SetCurrentPlayerIndicator'
+1460893267688	Rename method 'InitialiseRenderer'
+1460893270548	Rename method 'CreateWindow'
+1460893273164	Rename method 'CreateBoardView'
+1460893280167	Rename method 'CreateWindow'
+1460893282909	Rename method 'CreateImage'
+1460893288379	Rename method 'CreateTextBox'
+1460893291056	Rename method 'CreateTexture'
+1460894630443	Delete element
+1460894634601	Delete element
+1460895594282	Delete elements
+1460895795046	Delete elements
+1460896945508	Move compilation unit

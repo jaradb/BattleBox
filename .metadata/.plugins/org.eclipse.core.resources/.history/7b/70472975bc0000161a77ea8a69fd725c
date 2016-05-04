@@ -1,0 +1,82 @@
+package model;
+
+import java.util.ArrayList;
+
+import boardGame.Constants;
+import boardGame.Vector2;
+import model.tileTypes.PathwayTile;
+import model.tokenTypes.classTokenTypes.*;
+
+public class GameBoard
+{
+	public Tile[][] tileGrid;
+	public ArrayList<Token> tokens;
+	
+	public GameBoard()
+	{
+		
+	}
+	
+	public void CreateGameBoard()
+	{
+		
+		//Create the tiles
+		int boardWidth = Constants.boardWidth;
+		int boardHeight = Constants.boardHeight;
+		
+		tileGrid = new Tile[boardHeight][boardWidth];
+		
+		for(int i = 0; i < boardWidth; i++)
+		{
+			for(int j = 0; j < boardHeight; j++)
+			{
+				tileGrid[i][j] = new PathwayTile();
+			}
+		}
+		
+		
+		tokens = new ArrayList<Token>();
+		
+		//Now create the starting tokens, one set for each player.
+		for(int i = 0; i < 2; i++)
+		{
+			ArcherClassToken archer = new ArcherClassToken();
+			ClericClassToken cleric = new ClericClassToken();
+			MageClassToken mage = new MageClassToken();
+			ThiefClassToken thief = new ThiefClassToken();
+			WarriorClassToken warrior = new WarriorClassToken();
+			
+			//Assign a player as an owner.
+			archer.tokenOwner = Token.Owner.values()[i];
+			cleric.tokenOwner = Token.Owner.values()[i];
+			mage.tokenOwner = Token.Owner.values()[i];
+			thief.tokenOwner = Token.Owner.values()[i];
+			warrior.tokenOwner = Token.Owner.values()[i];
+			
+			tokens.add(archer);
+			tokens.add(cleric);
+			tokens.add(mage);
+			tokens.add(thief);
+			tokens.add(warrior);
+			
+			//Some hardcoded starting points
+			if(i == 0)
+			{
+				archer.gridPosition = new Vector2(1, 0);
+				cleric.gridPosition = new Vector2(2, 0);
+				mage.gridPosition = new Vector2(3, 0);
+				thief.gridPosition = new Vector2(4, 0);
+				warrior.gridPosition = new Vector2(5, 0);
+			}
+			else
+			{
+				archer.gridPosition = new Vector2(1, 8);
+				cleric.gridPosition = new Vector2(2, 8);
+				mage.gridPosition = new Vector2(3, 8);
+				thief.gridPosition = new Vector2(4, 8);
+				warrior.gridPosition = new Vector2(5, 8);	
+			}
+		}
+	}
+	
+}

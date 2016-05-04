@@ -1,0 +1,16 @@
+Fix this stuff:
+--------------
+Currently the mouse listener has a reference to the TurnController, which makes a strange path 
+of logic.
+
+TurnController -> referenced by BoardRenderer -> passes reference to Mouse Listener
+-> returns information to TurnController -> Manipulates GameBoard
+
+Kind of gross.
+--------------
+Token ownership is done via an enum, but it could probably be done... better. Somehow.
+--------------
+Player 1 always goes first. Might want to randomise that for balance.
+--------------
+
+To do:

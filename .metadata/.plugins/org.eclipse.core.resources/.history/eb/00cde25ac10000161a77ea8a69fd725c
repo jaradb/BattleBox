@@ -1,0 +1,84 @@
+package controller;
+import boardGame.Constants;
+import boardGame.Vector2;
+import model.GameBoard;
+import model.Token;
+import model.Token.Owner;
+
+public class TurnController 
+{
+	public enum TurnState
+	{
+		waitingToSelectToken,
+		waitingToMoveToken,
+	}
+	
+	TurnState currentState = TurnState.waitingToSelectToken;
+	
+	public GameBoard boardToControl;
+	
+	public PlayerController player1;
+	public PlayerController player2;
+	
+	private PlayerController currentPlayersTurn = null;
+	
+	float currentTurnTimer = 0;
+	
+	public void InitialisePlayers()
+	{
+		player1 = new PlayerController(1);
+		player2 = new PlayerController(2);
+		
+		currentPlayersTurn = player1;
+	}
+	
+	public void SwitchPlayers()
+	{
+		//Switch player
+		if(currentPlayersTurn == player1) currentPlayersTurn = player2;
+		else if(currentPlayersTurn == player2) currentPlayersTurn = player1;
+		
+		System.out.println("its currently the turn of: " + currentPlayersTurn.toString());
+		
+		currentTurnTimer = 0;
+		TurnState currentState = TurnState.waitingToSelectToken;
+	}
+	
+	public void UpdateTurn(float timeDelta)
+	{
+		if(timeDelta > 1.0) timeDelta = 1.0f;
+		
+		//Track how many seconds have passed.
+		currentTurnTimer += timeDelta;
+		
+		if(currentTurnTimer > Constants.turnTimeInSeconds)
+		{
+			SwitchPlayers();
+		}
+	}
+	
+	public void HandleClickEvent(Vector2 clickGridLocation)
+	{
+		Token tokenClicked = boardToControl.GetTokenAtLocation(clickGridLocation);
+		
+		if(tokenClicked != null)
+		{
+			if(tokenClicked.tokenOwner == Token.Owner.player1 && currentPlayersTurn.playerIndex == 1)
+			{
+				//Got control of a token
+				System.out.println("Player 1 got control of token!");
+			}
+			
+			if(tokenClicked.tokenOwner == Token.Owner.player1 && currentPlayersTurn.playerIndex == 1)
+			{
+				//Got control of a token
+				System.out.println("Player 2 got control of token!");
+			}
+		}
+
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,23 @@
+package view.swingGUI;
+
+import boardGame.Vector2;
+import view.guiInterface.TextBox;
+
+public class SwingTextbox implements TextBox
+{
+
+	@Override
+	public void setScreenSpacePosition(Vector2 position)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setText(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

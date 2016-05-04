@@ -1,0 +1,8 @@
+package model.tileTypes;
+
+import model.Tile;
+
+public class BlankTile extends Tile
+{
+
+}

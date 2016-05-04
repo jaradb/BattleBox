@@ -1,0 +1,32 @@
+package view;
+
+import battleBox.Constants;
+import battleBox.Vector2;
+import view.guiInterface.*;
+
+public class UIRenderer
+{
+	GUIFactory guiFactory;
+	
+	public TextBox currentPlayerTextbox;
+	
+	public UIRenderer(GUIFactory guiFactoryToUse)
+	{
+		guiFactory = guiFactoryToUse;
+	}
+	
+	public void CreateCurrentPlayerIndicator()
+	{
+		currentPlayerTextbox = guiFactory.CreateTextBox();
+		
+		Vector2 textBoxSize = new Vector2(200, 50);
+		
+		
+		currentPlayerTextbox.setBounds(new Vector2((Constants.windowWidth / 2) - (textBoxSize.x / 2), 
+													Constants.windowHeight - textBoxSize.y), 
+													textBoxSize);
+		
+		currentPlayerTextbox.setText("Currently Player 1's turn.");
+	}
+	
+}

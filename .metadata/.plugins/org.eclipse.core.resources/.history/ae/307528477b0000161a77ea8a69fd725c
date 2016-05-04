@@ -1,0 +1,15 @@
+package boardGame;
+
+public class Vector2
+{
+	public int x;
+	public int y;
+	
+	public Vector2(int newX, newY)
+	{
+		x = newX;
+		y = newY;
+	}
+	
+	
+}

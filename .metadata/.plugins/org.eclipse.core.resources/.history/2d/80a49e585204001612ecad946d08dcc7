@@ -1,0 +1,38 @@
+package view.swingGUI;
+
+import battleBox.Vector2;
+import view.guiInterface.Image;
+import view.guiInterface.Texture;
+
+public class SwingImage implements Image
+{
+
+	@Override
+	public void setPosition(Vector2 screenSpacePosition)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changeTexture(Texture newTexture)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void highlight(boolean highlightEnabled)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void tintTexture(float r, float g, float b)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

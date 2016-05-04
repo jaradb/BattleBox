@@ -1,0 +1,18 @@
+package view;
+
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
+import boardGame.Vector2;
+
+public class TokenRenderer extends JLabel
+{
+	private static final long serialVersionUID = 1L;
+	
+	public Vector2 gridPosition;
+	
+	public TokenRenderer(Icon image)
+	{
+		super.setIcon(image);
+	}
+}

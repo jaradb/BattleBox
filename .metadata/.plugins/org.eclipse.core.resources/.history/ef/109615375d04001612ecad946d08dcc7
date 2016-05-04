@@ -1,0 +1,11 @@
+package model.tokenTypes;
+
+import model.Token;
+
+public class ClassToken extends Token
+{
+	public String GetImageAssetName()
+	{
+		return "Not implemented";
+	}
+}

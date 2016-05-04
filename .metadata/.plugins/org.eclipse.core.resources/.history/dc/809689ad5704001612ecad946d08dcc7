@@ -1,0 +1,8 @@
+package model.tileTypes;
+
+import model.Tile;
+
+public class PathwayTile  extends Tile
+{
+
+}

@@ -1,0 +1,13 @@
+package view.guiInterface;
+
+import battleBox.math.Vector2;
+
+/**
+ * The TextBox is an abstract interface of an TextBox that can be placed in screen space and have a String set to render.
+ */
+public interface TextBox
+{
+	public void setBounds(Vector2 position, Vector2 size);
+	
+	public void setText(String string);
+}

@@ -1,0 +1,24 @@
+package model.factories;
+
+import battleBox.Vector2;
+import model.Tile;
+import model.tileTypes.*;
+
+public class TileFactory
+{
+	public Tile CreateTile(String tileType, Vector2 gridPosition)
+	{
+		Tile newTile = null;
+		
+		switch (tileType)
+		{
+		case "blank":
+			newTile = new BlankTile();
+			break;
+			
+			
+		}
+		
+		
+	}
+}

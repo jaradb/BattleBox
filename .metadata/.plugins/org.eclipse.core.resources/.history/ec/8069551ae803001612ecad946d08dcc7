@@ -1,0 +1,8 @@
+package view.swingGUI;
+
+import view.guiInterface.Texture;
+
+public class SwingTexture implements Texture
+{
+
+}

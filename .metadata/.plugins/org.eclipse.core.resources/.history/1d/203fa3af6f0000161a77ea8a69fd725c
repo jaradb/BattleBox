@@ -1,0 +1,6 @@
+package model.tokenTypes.classTokenTypes;
+
+public class ArcherClassToken
+{
+
+}

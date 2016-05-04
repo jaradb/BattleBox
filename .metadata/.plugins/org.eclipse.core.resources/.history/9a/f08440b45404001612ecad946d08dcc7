@@ -1,0 +1,23 @@
+package view;
+
+import view.guiInterface.GUIFactory;
+
+public class ViewRenderer
+{
+	GUIFactory guiFactory;
+	
+	BoardRenderer boardRenderer;
+	UIRenderer uiRenderer;
+	
+	public void InitialiseRenderer(GUIFactory factoryToUse)
+	{
+		guiFactory = factoryToUse;
+		
+		boardRenderer = new BoardRenderer(guiFactory);
+		uiRenderer = new UIRenderer(guiFactory);
+	}
+	
+	
+	
+	
+}

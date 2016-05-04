@@ -1,0 +1,11 @@
+package model.factories;
+
+import battleBox.Vector2;
+
+public class TileFactory
+{
+	public Tile CreateTile(String tileType, Vector2 gridPosition)
+	{
+		
+	}
+}

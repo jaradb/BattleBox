@@ -1,0 +1,17 @@
+package model;
+
+import boardGame.Vector2;
+
+public class Token 
+{
+	public enum Owner
+	{
+		player1,
+		player2,
+		neutral
+	}
+	
+	public Owner tokenOwner;
+	
+	public Vector2 gridPosition;
+}

@@ -1,0 +1,6 @@
+package view.renderInterface;
+
+public interface UserInterface
+{
+	
+}

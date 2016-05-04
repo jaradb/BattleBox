@@ -1,0 +1,12 @@
+package model.tileTypes;
+
+import model.Tile;
+
+public class BlockedTile  extends Tile
+{
+	@Override
+	public String getImageAssetName()
+	{
+		return "blockedTile.png";
+	}
+}

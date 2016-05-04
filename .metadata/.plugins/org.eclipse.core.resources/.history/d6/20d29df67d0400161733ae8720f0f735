@@ -1,0 +1,11 @@
+package view;
+
+import view.guiInterface.GUIFactory;
+
+public class UIRenderer
+{
+	public UIRenderer(GUIFactory guiFactory)
+	{
+		
+	}
+}

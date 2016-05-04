@@ -1,0 +1,10 @@
+package view.guiInterface;
+
+public interface Texture
+{
+	public void loadTextureFromFile(String filename);
+	
+	public void tint(float r, float g, float b);
+	
+	public String filename = null;
+}

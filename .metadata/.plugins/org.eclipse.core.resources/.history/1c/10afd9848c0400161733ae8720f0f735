@@ -1,0 +1,117 @@
+package view.swingGUI;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+import battleBox.Vector2;
+import controller.BoardMouseListener;
+import view.guiInterface.Image;
+import view.guiInterface.Texture;
+
+
+public class SwingImage implements Image
+{
+	public JLabel jLabel; 
+	SwingTexture texture;
+	
+	Vector2 imageGridPosition;
+
+	@Override
+	public void setPosition(Vector2 screenSpacePosition)
+	{
+		jLabel.setBounds(	screenSpacePosition.x, 
+							screenSpacePosition.y, 
+							jLabel.getBounds().width, 
+							jLabel.getBounds().height);
+	}
+
+	@Override
+	public void setTexture(Texture newTexture)
+	{
+		SwingTexture swingTexture = (SwingTexture)newTexture;
+		texture = swingTexture;
+		jLabel.setIcon(new ImageIcon(swingTexture.bufferedImage));
+		
+	}
+
+	@Override
+	public void highlight(boolean highlightEnabled)
+	{
+
+	}
+
+	@Override
+	public void tintTexture(float r, float g, float b)
+	{
+		BufferedImage tintedSprite = new BufferedImage(texture.bufferedImage.getWidth(), texture.bufferedImage.getHeight(), BufferedImage.TRANSLUCENT);
+
+		for (int i = 0; i < tintedSprite.getWidth(); i++)
+		{
+			  for (int j = 0; j < tintedSprite.getHeight(); j++)
+			  {
+			        int ax = texture.bufferedImage.getColorModel().getAlpha(texture.bufferedImage.getRaster().getDataElements(i, j, null));
+					int rx = texture.bufferedImage.getColorModel().getRed(texture.bufferedImage.getRaster().getDataElements(i, j, null));
+					int gx = texture.bufferedImage.getColorModel().getGreen(texture.bufferedImage.getRaster().getDataElements(i, j, null));
+					int bx = texture.bufferedImage.getColorModel().getBlue(texture.bufferedImage.getRaster().getDataElements(i, j, null));
+					rx *= r;
+					gx *= g;
+					bx *= b;
+					tintedSprite.setRGB(i, j, (ax << 24) | (rx << 16) | (gx << 8) | (bx));
+		      }
+	    }
+		
+		jLabel.setIcon(new ImageIcon(tintedSprite));
+	}
+
+	@Override
+	public void setSize(Vector2 size)
+	{
+		jLabel.setBounds(	jLabel.getBounds().x, 
+							jLabel.getBounds().y, 
+							size.x, 
+							size.y);
+		
+	}
+
+	@Override
+	public void setGridPosition(Vector2 gridPosition)
+	{
+		imageGridPosition = gridPosition;
+		
+		jLabel.setBounds(	gridPosition.x * jLabel.getBounds().width, 
+							gridPosition.y * jLabel.getBounds().height, 
+							jLabel.getBounds().width, 
+							jLabel.getBounds().height);
+		
+	}
+	
+	@Override
+	public Vector2 getGridPosition()
+	{
+		return imageGridPosition;
+	}
+
+	@Override
+	public void setVisible(boolean isVisible)
+	{
+		jLabel.setVisible(isVisible);
+	}
+
+	@Override
+	public void addMouseEventListener(ArrayList<Object> listeners, Vector2 gridPosition)
+	{
+		BoardMouseListener newListener = new BoardMouseListener();
+		newListener.gridPosition = gridPosition;
+		
+		newListener.objectsToInvoke = listeners;
+
+		jLabel.addMouseListener(newListener);
+		
+	}
+
+
+
+}

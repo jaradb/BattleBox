@@ -1,0 +1,12 @@
+package view.guiInterface;
+
+public interface GUIFactory
+{
+	void CreateWindow(String windowTitle, int sizeX, int sizeY);
+	
+	Image CreateImage(Texture texture);
+	
+	TextBox CreateTextBox();
+	
+	Texture CreateTexture(String filename);
+}

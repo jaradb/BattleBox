@@ -1,0 +1,11 @@
+package view.guiInterface;
+import battleBox.Vector2;
+
+public interface Image
+{
+	void setPosition(Vector2 screenSpacePosition);
+	
+	void changeTexture(Texture newTexture);
+	
+	void highlight(boolean highlightEnabled);
+}

@@ -1,0 +1,67 @@
+package boardGame;
+
+import controller.TurnController;
+import model.GameBoard;
+import view.BoardRenderer;
+
+public class Main
+{
+	static TurnController turnController;
+	static BoardRenderer boardRenderer;
+	static GameBoard gameBoard;
+
+	public static void main(String[] args)
+	{
+		
+		
+		boardRenderer = new BoardRenderer();
+		gameBoard = new GameBoard();
+		turnController = new TurnController();
+		
+		turnController.InitialisePlayers();
+		
+		gameBoard.CreateGameBoard();
+		
+		boardRenderer.createCanvas(600, 600);
+
+		boardRenderer.loadResources();
+		
+		boardRenderer.SetBoardToRender(gameBoard);
+		
+		
+		//boardRenderer.renderBoard();
+		
+
+		boardRenderer.createTokenRenderers();
+		boardRenderer.createTileRenderers();
+		
+		boardRenderer.addMouseListeners(turnController);
+		
+		boardRenderer.updateRenderInformation();
+		
+
+		//Figure out a time delta
+		long start = 0;
+		long end = 0;
+		
+
+		do
+		{
+			//Get the start time
+			start = System.nanoTime();
+			
+			//Divide it by 1000000000 to convert it from nanoseconds to seconds. 
+			//Makes you realise how small nanoseconds are.
+			turnController.UpdateTurn((start - end) / 1000000000.0f);
+			
+			//Set our end time to our start time so we can figure out a delta.
+			end = start;
+			
+			
+		}
+		while(true);
+		
+		
+	}
+
+}

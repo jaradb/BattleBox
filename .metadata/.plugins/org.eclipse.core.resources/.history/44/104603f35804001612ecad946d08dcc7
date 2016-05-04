@@ -1,0 +1,71 @@
+package battleBox;
+
+import controller.TurnController;
+import model.GameBoard;
+import view.BoardRenderer;
+import view.ViewRenderer;
+import view.swingGUI.SwingFactory;
+
+public class Main
+{
+	static TurnController turnController;
+	static ViewRenderer viewRenderer;
+	static GameBoard gameBoard;
+	
+	static SwingFactory guiRenderer;
+
+	public static void main(String[] args)
+	{
+		//boardRenderer = new BoardRenderer();
+		
+		//Create the renderer we're going to use to create the view.
+		//We're using Swing/AWT, but an abstract factory exists so 
+		//multiple renderer interfaces can be made.
+		guiRenderer = new SwingFactory();
+		
+		
+		viewRenderer = new ViewRenderer();
+		gameBoard = new GameBoard();
+		turnController = new TurnController();
+		
+		viewRenderer.InitialiseRenderer(guiRenderer);
+		viewRenderer.CreateWindow();
+				
+		turnController.InitialisePlayers();
+		turnController.boardToControl = gameBoard;
+		
+		//turnController.boardRenderer = boardRenderer;
+		
+		gameBoard.CreateGameBoard();
+		//boardRenderer.createCanvas(568, 700);
+		//boardRenderer.loadResources();
+		//boardRenderer.createUI();
+		//boardRenderer.SetBoardToRender(gameBoard);
+		//boardRenderer.createTokenRenderers();
+		//boardRenderer.createTileRenderers();
+		//boardRenderer.addMouseListeners(turnController);
+		//boardRenderer.updateRenderInformation();
+	
+
+
+		//Figure out a time delta
+		long start = 0;
+		long end = 0;
+		
+		//Start the main logic loop.
+		do
+		{
+			//Get the start time
+			start = System.nanoTime();
+			
+			turnController.UpdateTurn((start - end) / Constants.nanoSecondsPerSecond);
+			
+			//Set our end time to our start time so we can figure out a delta.
+			end = start;
+		}
+		while(true);
+		
+		
+	}
+
+}

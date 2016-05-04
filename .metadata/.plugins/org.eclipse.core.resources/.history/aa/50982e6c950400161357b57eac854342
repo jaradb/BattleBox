@@ -1,0 +1,10 @@
+package view.guiInterface;
+
+import battleBox.Vector2;
+
+public interface TextBox
+{
+	public void setBounds(Vector2 position, Vector2 size);
+	
+	public void setText(String string);
+}

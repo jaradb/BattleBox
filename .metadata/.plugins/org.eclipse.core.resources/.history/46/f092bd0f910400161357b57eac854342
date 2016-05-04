@@ -1,0 +1,12 @@
+package model.tileTypes;
+
+import model.Tile;
+
+public class PathwayTile  extends Tile
+{
+	@Override
+	public String GetImageAssetName()
+	{
+		return "pathwayTile.png";
+	}
+}

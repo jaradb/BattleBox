@@ -1,0 +1,18 @@
+package model.factories;
+
+import battleBox.Vector2;
+import model.Token;
+
+public class TokenFactory
+{
+	public Token CreateToken(String tokenType, Vector2 gridPosition, int playerOwner)
+	{
+		switch (tokenType)
+		{
+		case "hello":
+			break;
+		}
+		
+		return null;
+	}
+}

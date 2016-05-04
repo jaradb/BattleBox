@@ -1,0 +1,20 @@
+package view;
+
+import view.guiInterface.GUIFactory;
+
+public class Renderer
+{
+	GUIFactory guiFactory;
+	
+	BoardRenderer boardRenderer;
+	UIRenderer uiRenderer;
+	
+	public void InitialiseRenderer()
+	{
+		//board and Ui created
+	}
+	
+	
+	
+	
+}

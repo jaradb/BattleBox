@@ -1,0 +1,13 @@
+Fix this stuff:
+
+Currently the mouse listener has a reference to the GameBoard, which makes a strange path 
+of logic.
+
+GameBoard -> referenced by BoardRenderer -> passes reference to Mouse Listener
+-> returns information to GameBoard
+
+Kind of gross.
+
+
+
+To do:

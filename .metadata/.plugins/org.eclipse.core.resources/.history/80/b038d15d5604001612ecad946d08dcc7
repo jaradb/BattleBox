@@ -1,0 +1,8 @@
+package model.tokenTypes;
+
+import model.Token;
+
+public class ClassToken extends Token
+{
+
+}

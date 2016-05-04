@@ -1,0 +1,22 @@
+package view.guiInterface;
+import java.util.ArrayList;
+
+import battleBox.Vector2;
+
+public interface Image
+{
+	void setVisible(boolean isVisible);
+	
+	void setPosition(Vector2 screenSpacePosition);
+	
+	void setSize(Vector2 size);
+	
+	void setGridPosition(Vector2 gridPosition);
+	Vector2 getGridPosition();
+	
+	void setTexture(Texture newTexture);
+	void tintTexture(float r, float g, float b);
+	void deTint();
+	
+	void addMouseEventListener(ArrayList<Object> listeners, Vector2 gridPosition);
+}

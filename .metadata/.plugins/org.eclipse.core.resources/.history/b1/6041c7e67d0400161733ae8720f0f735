@@ -1,0 +1,29 @@
+package view.swingGUI;
+
+import battleBox.Vector2;
+import view.guiInterface.TextBox;
+
+import javax.swing.*;
+
+public class SwingTextbox implements TextBox
+{
+	public JTextField jTextField;
+
+	@Override
+	public void setScreenSpacePosition(Vector2 position)
+	{
+		jTextField.setBounds(	position.x, 
+								position.y, 
+								jTextField.getBounds().width, 
+								jTextField.getBounds().height);
+		
+	}
+
+	@Override
+	public void setText(String string)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}

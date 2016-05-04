@@ -1,0 +1,16 @@
+package view;
+
+import javax.swing.JLabel;
+
+import boardGame.Vector2;
+
+public class TileRenderer extends JLabel
+{
+	public Vector2 gridPosition;
+	
+	public TileRenderer()
+	{
+		
+	}
+	
+}
